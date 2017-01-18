@@ -4,12 +4,12 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
-import com.luseen.simplepermission.permissions.Permission;
-import com.luseen.simplepermission.permissions.PermissionActivity;
+import com.luseen.simplepermission.permissions.PermissionBaseActivity;
+import com.luseen.simplepermission.permissions.Permissions;
 import com.luseen.simplepermission.permissions.PermissionUtils;
 import com.luseen.simplepermission.permissions.SinglePermissionCallback;
 
-public class MainActivity extends PermissionActivity {
+public class MainActivity extends PermissionBaseActivity {
 
     public static final String TAG = "SimplePermission";
     private TextView textView;
@@ -24,7 +24,7 @@ public class MainActivity extends PermissionActivity {
             @Override
             public void onClick(View v) {
                 if (PermissionUtils.isMarshmallowOrHigher()) {
-                    requestPermission(Permission.READ_SMS, new SinglePermissionCallback() {
+                    requestPermission(Permissions.READ_SMS, new SinglePermissionCallback() {
                         @Override
                         public void onPermissionResult(boolean permissionGranted, boolean isPermissionDeniedForever) {
                             textView.setText("Permission granted = " + permissionGranted +

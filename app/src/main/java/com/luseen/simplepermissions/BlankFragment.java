@@ -8,12 +8,12 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.luseen.simplepermission.permissions.MultiplePermissionCallback;
-import com.luseen.simplepermission.permissions.Permission;
-import com.luseen.simplepermission.permissions.PermissionFragment;
+import com.luseen.simplepermission.permissions.PermissionBaseFragment;
+import com.luseen.simplepermission.permissions.Permissions;
 
 import java.util.List;
 
-public class BlankFragment extends PermissionFragment {
+public class BlankFragment extends PermissionBaseFragment {
 
     public static final String TAG = BlankFragment.class.getSimpleName();
 
@@ -27,28 +27,28 @@ public class BlankFragment extends PermissionFragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        Permission[] permissions = new Permission[]{
-                Permission.CALL_PHONE,
-                Permission.CAMERA,
-                Permission.GET_ACCOUNTS,
-                Permission.FINE_LOCATION};
+        Permissions[] permissions = new Permissions[]{
+                Permissions.CALL_PHONE,
+                Permissions.CAMERA,
+                Permissions.GET_ACCOUNTS,
+                Permissions.FINE_LOCATION};
 
         requestPermissions(permissions, new MultiplePermissionCallback() {
             @Override
-            public void onPermissionGranted(boolean allPermissionsGranted, List<Permission> grantedPermissions) {
+            public void onPermissionGranted(boolean allPermissionsGranted, List<Permissions> grantedPermissions) {
                 Log.d(TAG, "All permissions is granted  = " + allPermissionsGranted);
-                for (Permission grantedPermission : grantedPermissions) {
+                for (Permissions grantedPermission : grantedPermissions) {
                     Log.d(TAG, "Granted permissions " + grantedPermission);
                 }
             }
 
             @Override
-            public void onPermissionDenied(List<Permission> deniedPermissions, List<Permission> foreverDeniedPermissions) {
-                for (Permission deniedPermission : deniedPermissions) {
+            public void onPermissionDenied(List<Permissions> deniedPermissions, List<Permissions> foreverDeniedPermissions) {
+                for (Permissions deniedPermission : deniedPermissions) {
                     Log.d(TAG, "Denied permissions " + deniedPermission);
                 }
 
-                for (Permission deniedPermission : foreverDeniedPermissions) {
+                for (Permissions deniedPermission : foreverDeniedPermissions) {
                     Log.d(TAG, "Forever denied permissions" + deniedPermission);
                 }
             }

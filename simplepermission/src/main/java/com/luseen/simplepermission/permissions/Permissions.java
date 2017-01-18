@@ -1,14 +1,12 @@
 package com.luseen.simplepermission.permissions;
 
 import android.Manifest;
-import android.annotation.TargetApi;
-import android.os.Build;
 
 /**
  * Created by Chatikyan on 24.11.2016.
  */
 
-public enum Permission {
+public enum Permissions {
 
     CAMERA(Manifest.permission.CAMERA),
     SEND_SMS(Manifest.permission.SEND_SMS),
@@ -33,12 +31,12 @@ public enum Permission {
 
     String permission;
 
-    Permission(String permission) {
+    Permissions(String permission) {
         this.permission = permission;
     }
 
-    public static Permission stringToPermission(String stringPermission) {
-        for (Permission permission : Permission.values()) {
+    public static Permissions stringToPermission(String stringPermission) {
+        for (Permissions permission : Permissions.values()) {
             if (stringPermission.equalsIgnoreCase(permission.toString()))
                 return permission;
         }

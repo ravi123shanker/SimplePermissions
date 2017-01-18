@@ -20,7 +20,7 @@ public class PermissionUtils {
         return Build.VERSION.SDK_INT >= Build.VERSION_CODES.M;
     }
 
-    public static boolean isGranted(Context context, Permission permission) {
+    public static boolean isGranted(Context context, Permissions permission) {
         return ContextCompat.checkSelfPermission(context, permission.toString()) == PackageManager.PERMISSION_GRANTED;
     }
 
@@ -30,7 +30,7 @@ public class PermissionUtils {
 
     public static boolean shouldShowRequestPermissionRationale(Activity activity, String permission) {
         return ActivityCompat.shouldShowRequestPermissionRationale(activity, permission)
-                && !isGranted(activity, Permission.stringToPermission(permission));
+                && !isGranted(activity, Permissions.stringToPermission(permission));
     }
 
     public static void openApplicationSettings(Context context) {

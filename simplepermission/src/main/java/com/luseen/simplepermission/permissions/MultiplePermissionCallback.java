@@ -8,7 +8,7 @@ import java.util.List;
 
 public interface MultiplePermissionCallback {
 
-    void onPermissionGranted(boolean allPermissionsGranted, List<Permission> grantedPermissions);
+    void onPermissionGranted(boolean allPermissionsGranted, List<Permissions> grantedPermissions);
 
-    void onPermissionDenied(List<Permission> deniedPermissions, List<Permission> foreverDeniedPermissions);
+    void onPermissionDenied(List<Permissions> deniedPermissions, List<Permissions> foreverDeniedPermissions);
 }
